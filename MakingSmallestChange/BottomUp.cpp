@@ -1,12 +1,3 @@
-/* Smallest Change
-*  Question : Given an input amount of change x, write a function to determine the
-*  minimum number of coins required to make that amount of change.
-*  Ex: change(100) = 4;
-*  change(1) = 1;
-*/
-// Complexity C * n (c= change, n = number of coins because that much banches exist for each iteration)
-
-#include <iostream>
 /* Smallest Change - Bottom up approach
 *  Question : Given an input amount of change x, write a function to determine the
 *  minimum number of coins required to make that amount of change.
@@ -15,6 +6,7 @@
 */
 // Complexity C * n (c= change, n = number of coins because that much banches exist for each iteration)
 
+#include <iostream>
 using namespace std;
 
 int makechange(int change, int cache[ ], int coins[ ], int no_of_coins)
