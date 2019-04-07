@@ -17,14 +17,23 @@ class StackOpr
   int size;
   
   public:
-  StackOpr() { size = SIZE;}
+  
+  StackOpr(): top(-1), size(10) 
+  { 
+    arr = new int[size];
+  }
+  
   StackOpr(int);
   
   void push(int data);
   int pop();
+  void printStack();
+  StackOpr sortStack();
   
   bool isEmpty();
   bool isFull();
+  
+  int getTopElement();
 };
 
 StackOpr::StackOpr(int Size)
@@ -44,12 +53,41 @@ bool StackOpr::isFull()
     return top == size -1;
 }
 
+int StackOpr::getTopElement()
+{
+    return arr[top];    
+}
+
 void StackOpr::push(int data)
 {
     if(isFull())
         cout << endl << "Stack is full";
     else
         arr[++top] = data;
+}
+
+StackOpr StackOpr::sortStack()
+{
+    
+    StackOpr tempStack;
+    
+    int temp;
+    
+    while(!isEmpty())
+    {
+        temp = getTopElement();
+        pop();
+        
+        while(!tempStack.isEmpty() && tempStack.getTopElement() < temp)
+        {
+           
+            int top = tempStack.pop();
+            push(top); 
+        }
+        tempStack.push(temp);
+    }
+    
+    return tempStack;
 }
 
 int StackOpr::pop()
@@ -62,20 +100,20 @@ int StackOpr::pop()
 
 int main()
 {
-    StackOpr s(4);
+    StackOpr s1(4);
+    StackOpr s2;
     
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    
-    while(!s.isEmpty())
-    {
-        cout << endl << s.pop();
-    }
+    s1.push(11);
+    s1.push(33);
+    s1.push(22);
+    s1.push(44);
 
-    if(s.isEmpty())
-        cout << endl << "Stack is empty";
-        
+    s2 = s1.sortStack();
+    
+    while(!s2.isEmpty())
+    {
+        cout <<"  " << s2.getTopElement();
+        s2.pop();
+    }
     return 0;
 }
