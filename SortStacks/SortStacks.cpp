@@ -8,7 +8,7 @@
 using namespace std;
 
 #define SIZE  10;
-
+0000
 class StackOpr
 {
   private:
@@ -68,9 +68,7 @@ void StackOpr::push(int data)
 
 StackOpr StackOpr::sortStack()
 {
-    
-    StackOpr tempStack;
-    
+    StackOpr tempStack;   
     int temp;
     
     while(!isEmpty())
